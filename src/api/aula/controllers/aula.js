@@ -11,11 +11,6 @@ const { convertRestQueryParams, buildQuery } = require("strapi-utils");
 
 module.exports = createCoreController('api::aula.aula', ({strapi}) => ({
 
-    async prova(ctx) {
-        console.log(await strapi.db.query('plugin::users-permissions.user').findMany({select:['password']})[0])
-        return 'bella'
-    },
-
     async find(ctx) {
         let userId = ctx.state.auth.credentials.id
         let response = await strapi.db.query('plugin::users-permissions.user').findOne({ populate : true, where : { id : userId } })
@@ -23,7 +18,6 @@ module.exports = createCoreController('api::aula.aula', ({strapi}) => ({
             // USER REQUEST
             userId = response.admin_user.id
             response = await strapi.db.query('api::aula.aula').findMany({where : { admin_user : userId } })
-            console.log(response, "USER")
 
         } else {
             // API TOKEN
@@ -49,10 +43,8 @@ module.exports = createCoreController('api::aula.aula', ({strapi}) => ({
                 item['esse3username'] = userUsername
                 item['esse3psw'] = userPassword
                 delete item['admin_user']
-                console.log(response, "TOKEN")
             }
         }
-        console.log(response, "out")
         return response
     }
 

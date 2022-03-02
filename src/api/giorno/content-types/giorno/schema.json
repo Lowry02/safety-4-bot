@@ -1,0 +1,20 @@
+{
+  "kind": "collectionType",
+  "collectionName": "giorni",
+  "info": {
+    "singularName": "giorno",
+    "pluralName": "giorni",
+    "displayName": "Giorno",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Nome": {
+      "type": "string",
+      "unique": true
+    }
+  }
+}

@@ -1,0 +1,8 @@
+CREAZIONE AUTOMATICA UTENTI
+    node_modules -> @strapi -> admin -> server -> services -> user.js::register
+
+RICERCA FILTRATA DELLE AULE
+    src -> api -> aula -> controllers -> aula.js::find
+
+AUTO SETTING PROPRIETARIO AULA
+    node_modules -> @strapi -> plugin-content-manager -> server -> controllers -> collection-types.js::create

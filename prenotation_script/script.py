@@ -5,7 +5,7 @@ import datetime
 import os
 import requests
 
-BASE_URL = "http://localhost:1337/api"
+BASE_URL = "https://safety-4-bot.herokuapp.com/api"
 API_TOKEN = "0c5f8e4aa267e2218305e314ecb191387743cc59cd486c43c9bea73e2b94b5419a574f45d32e809ce979d617df97e822e3bc221a4eb32b6da2dcedfdca77ab65d724c9c5f9dd9801b9a5baa7125a7ea09704ea1cbef80d7ce489b509a1e34bcafa079012d784c8a43181ddb396d2a458018e0a3e51e9bd95fdf6c21252744a58"
 
 # ---------- URL to book a room per day ----------

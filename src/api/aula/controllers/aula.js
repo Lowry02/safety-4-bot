@@ -23,6 +23,8 @@ module.exports = createCoreController('api::aula.aula', ({strapi}) => ({
             // USER REQUEST
             userId = response.admin_user.id
             response = await strapi.db.query('api::aula.aula').findMany({where : { admin_user : userId } })
+            console.log(response, "USER")
+
         } else {
             // API TOKEN
             let dayOfWeek = {
@@ -47,8 +49,10 @@ module.exports = createCoreController('api::aula.aula', ({strapi}) => ({
                 item['esse3username'] = userUsername
                 item['esse3psw'] = userPassword
                 delete item['admin_user']
+                console.log(response, "TOKEN")
             }
         }
+        console.log(response, "out")
         return response
     }
 

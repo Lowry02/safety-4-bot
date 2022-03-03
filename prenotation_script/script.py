@@ -4,6 +4,7 @@ from selenium.webdriver.common.keys import Keys
 import datetime
 import os
 import requests
+import urllib
 
 BASE_URL = "https://safety-4-bot.herokuapp.com/api"
 API_TOKEN = "0c5f8e4aa267e2218305e314ecb191387743cc59cd486c43c9bea73e2b94b5419a574f45d32e809ce979d617df97e822e3bc221a4eb32b6da2dcedfdca77ab65d724c9c5f9dd9801b9a5baa7125a7ea09704ea1cbef80d7ce489b509a1e34bcafa079012d784c8a43181ddb396d2a458018e0a3e51e9bd95fdf6c21252744a58"
@@ -59,20 +60,22 @@ def get_tomorrow_week_day():
 
 def get_tomorrow_date():
     today = datetime.datetime.today()
-    tomorrow = today + datetime.timedelta(days=1)
+    # tomorrow = today + datetime.timedelta(days=1)
+    tomorrow = today
     tomorrow_date_format = str(tomorrow.year) + str(tomorrow.month).zfill(2) + str(tomorrow.day).zfill(2)
     return tomorrow_date_format
 
-def book_room(username, nome, edificio, aula, tipo, codice, ora):
+def book_room(token, username, nome, edificio, aula, tipo, codice, ora):
     tipo = "lezioniprenota" if tipo == "Lezione" else ""
     edificio = edificio.replace(" ", "%20")
     nome = nome.replace(" ", "%20")
     aula = aula.replace(" ", "%20")
+    token = urllib.parse.quote(token)
     tomorrow = get_tomorrow_date()
-    url = f"https://us-central1-eiloborg.cloudfunctions.net/s4aapp?f={tipo}&token={username}&v1=ED1&v2={edificio}&v3={codice}&v4={tomorrow}&v5={ora}&v6={nome}%0D&v7={aula}%20{edificio}"    
+    url = f"https://us-central1-eiloborg.cloudfunctions.net/s4aapp?f={tipo}&token={token}&v1=ED1&v2={edificio}&v3={codice}&v4={tomorrow}&v5={ora}&v6={nome}%0D&v7={aula}%20{edificio}"    
     command = "curl '" + url + "'"
     os.system(command)
-    print(url)
+    print("\n" + nome + "\n")
 
 def get_token():
     driver = webdriver.Chrome('./chromedriver')
@@ -83,8 +86,8 @@ def get_token():
 
 def login(username, password):
     url = f"https://us-central1-eiloborg.cloudfunctions.net/s4aapp?f=0&v1={username}&v2={password}"
-    command = "curl '" + url + "'"
-    os.system(command)
+    token = requests.get(url).text
+    return token
 
 # ----------- MAIN -----------------
 
@@ -104,8 +107,9 @@ for item in room_list:
 for username in room_per_user.keys():
     for room in room_per_user[username]:
         password = room['esse3psw']
-        login(username, password)
+        token = login(username, password)
         book_room(
+            token=token,
             username=username,
             nome=room['Nome'],
             edificio=room['Edificio'],

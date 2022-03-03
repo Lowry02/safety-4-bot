@@ -101,7 +101,7 @@ for item in room_list:
     if not username in room_per_user.keys():
         room_per_user[username] = [item]
     else:
-        room_per_user[username].push(item)
+        room_per_user[username].append(item)
 
 # book rooms per user
 for username in room_per_user.keys():

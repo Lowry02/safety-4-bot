@@ -11,10 +11,10 @@ _last_hour_block = 5
 _hours = ["08", "11", "14", "17", "20"]
 
 #format => hour_block [1,2,3,4,5]
-booking_url = "https://us-central1-eiloborg.cloudfunctions.net/s4aapp?f=prenota&token=U2FsdGVkX19bvfN1LAXXs6mhQg7HorCTiiUNOn7iTbE%3D&v1={}&v2=ED1&v3=^SER13^"
+booking_url = "https://us-central1-eiloborg.cloudfunctions.net/s4aapp?f=prenota&token=U2FsdGVkX19bvfN1LAXXs6mhQg7HorCTiiUNOn7iTbE%3D&v1={}&v2=ED1&v3=^SER12^"
 
 # format => date, hour
-access_url = "https://us-central1-eiloborg.cloudfunctions.net/s4aapp?f=accedi&token=U2FsdGVkX19F5pEV0DKiW5Xpc9%2FUUSSBtFqN1r7900Q%3D&v1={}*SER13*{}00*PRENOTAZIONE%20POSTO*Edificio%20A%20SPAZIO%20STUDIO%201%20piano%20terra%20ala%20sx%20"
+access_url = "https://us-central1-eiloborg.cloudfunctions.net/s4aapp?f=accedi&token=U2FsdGVkX19F5pEV0DKiW5Xpc9%2FUUSSBtFqN1r7900Q%3D&v1={}*SER12*{}00*PRENOTAZIONE%20POSTO*Edificio%20A%20SPAZIO%20STUDIO%201%20piano%20terra%20ala%20sx%20"
 
 # booking rooms: from 08.00 to 17.00
 for i in range(1, _last_hour_block):

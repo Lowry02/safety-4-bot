@@ -3,8 +3,7 @@ import requests
 
 # creates date format. eg. 20220404
 def build_date():
-  # date = datetime.datetime.now() + datetime.timedelta(days=1)
-  date = datetime.datetime.now() + datetime.timedelta()
+  date = datetime.datetime.now() + datetime.timedelta(days=1)
   return date.strftime("%Y%m%d")
 
 _last_hour_block = 5

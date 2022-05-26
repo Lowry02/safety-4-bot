@@ -18,6 +18,7 @@ _headers = {
 tokens = [
   "U2FsdGVkX1/ULpYErMXNHUCWW3cKMb9LTtCpLTi4qnI=", # lorenzo
   "U2FsdGVkX1/AjbnWwHiEIymZH0ip9fExuO3HTxpMQgA=", # caio
+  "U2FsdGVkX187wl55oRxdyAutn7SQAnJZOhnVK8ACp8M%3D" # jack
 ]
 
 #format => hour_block [6,7,8,9,10]
@@ -36,10 +37,10 @@ for token in tokens:
     print(f"Result: {r.text}")
 
   # accessing rooms
-  for i in range(0, _last_hour_block):
-    date = build_date()
-    hour = _hours[i]
-    booking_number = random.randint(0, 104)
-    print(f"Accessing {access_url.format(token, date, hour, booking_number)}")
-    r = requests.get(access_url.format(token, date, hour, booking_number), headers=_headers)
-    print(f"Response: {r.text}")
+  # for i in range(0, _last_hour_block):
+  #   date = build_date()
+  #   hour = _hours[i]
+  #   booking_number = random.randint(0, 104)
+  #   print(f"Accessing {access_url.format(token, date, hour, booking_number)}")
+  #   r = requests.get(access_url.format(token, date, hour, booking_number), headers=_headers)
+  #   print(f"Response: {r.text}")

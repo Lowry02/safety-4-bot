@@ -7,7 +7,10 @@ def build_date():
   date = datetime.datetime.now() + datetime.timedelta(days=1)
   return date.strftime("%Y%m%d")
 
-_last_hour_block = 4
+_first_hour_block = 1
+# _first_hour_block = 6
+_last_hour_block = 5
+# _last_hour_block = 10
 _hours = ["08", "11", "14", "17", "20"]
 _headers = {
   "origin" : "https://gosafety.web.app",
@@ -31,7 +34,7 @@ access_url = "https://us-central1-eiloborg.cloudfunctions.net/s4aapp2?f=accedi&t
 # booking rooms and accessing rooms for each user
 for token in tokens:
   # booking rooms: from 08.00 to 17.00
-  for i in range(1, _last_hour_block + 1):
+  for i in range(_first_hour_block, _last_hour_block + 1):
     print(f"Booking {booking_url.format(token, i)}")
     r = requests.get(booking_url.format(token, i), headers=_headers)
     print(f"Result: {r.text}")

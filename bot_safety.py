@@ -7,10 +7,10 @@ def build_date():
   date = datetime.datetime.now() + datetime.timedelta(days=1)
   return date.strftime("%Y%m%d")
 
-_first_hour_block = 1
-# _first_hour_block = 6
-_last_hour_block = 5
-# _last_hour_block = 10
+# _first_hour_block = 1
+_first_hour_block = 6
+# _last_hour_block = 5
+_last_hour_block = 10
 _hours = ["08", "11", "14", "17", "20"]
 _headers = {
   "origin" : "https://gosafety.web.app",
